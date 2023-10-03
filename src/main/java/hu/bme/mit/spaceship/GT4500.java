@@ -37,7 +37,7 @@ public class GT4500 implements SpaceShip {
   public boolean fireTorpedo(FiringMode firingMode) {
 
     boolean firingSuccess = false;
-
+    try{
     switch (firingMode) {
       case SINGLE:
         if (wasPrimaryFiredLast) {
@@ -85,7 +85,11 @@ public class GT4500 implements SpaceShip {
         }
         break;
     }
-
+  }
+  catch(IllegalArgumentException e){
+    System.out.println("Something is wrong with the number of torpedos");
+    return false;
+  }
     return firingSuccess;
   }
 
